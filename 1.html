@@ -1,0 +1,44 @@
+<style>
+    .fruit {
+      position: fixed;
+      font-size: 15px;
+      opacity: 1;
+      transition: opacity 2s ease;
+     user-select: none; /* 과일 요소를 드래그할 수 없도록 설정 */
+      pointer-events: none; /* 과일 요소에 마우스 이벤트를 적용하지 않도록 설정 */
+   }
+  </style>
+  <script type="text/javascript">
+    // <![CDATA[
+    var fruits = ['🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🫐', '🍈', '🍒', '🍑', '🥭'];
+    var canCreateFruit = true;
+
+    document.onmousemove = function(event) {
+      if (!canCreateFruit) return;
+
+      canCreateFruit = false;
+
+      setTimeout(function() {
+        canCreateFruit = true;
+      }, 100);
+
+      var x = event.clientX;
+      var y = event.clientY;
+
+      var fruit = document.createElement('div');
+      fruit.className = 'fruit';
+      fruit.innerHTML = fruits[Math.floor(Math.random() * fruits.length)];
+      fruit.style.left = (x - 10) + 'px';
+      fruit.style.top = (y - 10) + 'px';
+
+      document.body.appendChild(fruit);
+
+      setTimeout(function() {
+        fruit.style.opacity = 0;
+        setTimeout(function() {
+          fruit.remove();
+        }, 2000);
+      }, 100);
+    };
+    // ]]>
+  </script>
