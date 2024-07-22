@@ -7,12 +7,86 @@
      <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css" type="text/css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-         
-         
+       .bubble {
+            position: absolute;
+            font-size: 15px; /* 물방울 이모티콘 크기 */
+            pointer-events: none;
+            animation: moveDown 3s forwards, fadeOut 3s forwards;
         }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes moveDown {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px); /* 물방울이 아래로 떨어지는 거리 */
+            }
+        }
+    </style><script>
+        let lastBubbleTime = 0;
+
+        document.addEventListener('mousemove', function(e) {
+            const now = Date.now();
+            if (now - lastBubbleTime < 300) return; // 300ms 간격으로 물방울 생성
+
+            lastBubbleTime = now;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            // 스크롤 위치를 고려하여 물방울 배치
+            bubble.style.left = `${e.clientX + window.scrollX}px`;
+            bubble.style.top = `${e.clientY + window.scrollY}px`;
+            bubble.innerText = '💧'; // 물방울 이모티콘 사용
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, 3000);
+        });
+    </script>
+</head>
+<body>
+  <!--헤더-->  
+  <div id="header" align="right">
+    <button type="button"class="button" onclick="location.href='https://blog.naver.com/1f1e44' ">blog</button>
+    
+</div>
+<!--타이틀--> 
+<div align="center" id="title">
+    <a href="index.html"><h1>Mouse Effect</h1></a>
+</div>
+<!--본문-->
+<div id="article" align="center">
+  
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="code">
+    
+    
+    
+    <pre>
+        &lt;style&gt;
+        
 
         .bubble {
             position: absolute;
@@ -38,86 +112,9 @@
                 transform: translateY(50px); /* 물방울이 아래로 떨어지는 거리 */
             }
         }
-
-     
-    </style>
-</head>
-<body>
-  <!--헤더-->  
-  <div id="header" align="right">
-    <button type="button"class="button" onclick="location.href='https://blog.naver.com/1f1e44' ">blog</button>
-    
-</div>
-<!--타이틀--> 
-<div align="center" id="title">
-    <a href="index.html"><h1>Mouse Effect</h1></a>
-</div>
-<!--본문-->
-<div id="article" align="center">
-  
- </div>
-
-
-
-
- <div class="code">  <pre>
-&lt;style&gt;
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-    }
-
-    .bubble {
-        position: absolute;
-        font-size: 15px; /* 물방울 이모티콘 크기 */
-        pointer-events: none;
-        animation: moveDown 3s forwards, fadeOut 3s forwards;
-    }
-
-    @keyframes fadeOut {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-
-    @keyframes moveDown {
-        0% {
-            transform: translateY(0);
-        }
-        100% {
-            transform: translateY(50px); /* 물방울이 아래로 떨어지는 거리 */
-        }
-    }
-&lt;/style&gt; 
-&lt;script&gt;
-    let lastBubbleTime = 0;
-
-    document.addEventListener('mousemove', function(e) {
-        const now = Date.now();
-        if (now - lastBubbleTime &lt; 300) return; // 300ms 간격으로 물방울 생성
-
-        lastBubbleTime = now;
-
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        // 마우스 커서에 더 가깝게 물방울 배치
-        bubble.style.left = `${e.clientX}px`; 
-        bubble.style.top = `${e.clientY}px`; 
-        bubble.innerText = '💧'; // 물방울 이모티콘 사용
-        document.body.appendChild(bubble);
-        
-        setTimeout(() => {
-            bubble.remove();
-        }, 3000);
-    });
-&lt;/script&gt;
-    </pre></div>  
-    <script>
+        &lt;/style&gt;
+ 
+        &lt;script&gt;
         let lastBubbleTime = 0;
 
         document.addEventListener('mousemove', function(e) {
@@ -128,9 +125,9 @@
 
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            // 마우스 커서에 더 가깝게 물방울 배치
-            bubble.style.left = `${e.clientX}px`; 
-            bubble.style.top = `${e.clientY}px`; 
+            // 스크롤 위치를 고려하여 물방울 배치
+            bubble.style.left = `${e.clientX + window.scrollX}px`;
+            bubble.style.top = `${e.clientY + window.scrollY}px`;
             bubble.innerText = '💧'; // 물방울 이모티콘 사용
             document.body.appendChild(bubble);
             
@@ -138,7 +135,19 @@
                 bubble.remove();
             }, 3000);
         });
-    </script>
+        &lt;/script&gt;
+    </pre>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     </div>  
+     
      
     
 </body>
